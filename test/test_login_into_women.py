@@ -2,7 +2,7 @@ import unittest
 import time
 from infra.browser_wrapper import BrowserWrapper
 from logic.login_terminalx import LoginTerminalx
-from logic.women_page import WomenPage
+from logic.Login_into_women_page import WomenPage
 
 class LoginTestTerminalx(unittest.TestCase):
 

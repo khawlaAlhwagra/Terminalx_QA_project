@@ -150,12 +150,3 @@ class RemoveFavoriteTerminalx(BasePage):
                 except Exception:
                     return False
 
-    def refresh_favorites(self):
-        """Refresh or revisit the favorites section to reflect updates."""
-        self._browser.refresh()
-        # Ensure the list is loaded again
-        try:
-            # Wait for loader to disappear then proceed (don't block on items presence)
-            self._wait_for_loader_clear(10)
-        except TimeoutException:
-            pass

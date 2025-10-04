@@ -24,10 +24,6 @@ class RemoveFavoriteTest(unittest.TestCase):
         # 3) Remove one favorite item (best-effort)
         fav_page.remove_first_favorite()
 
-        # 4) Refresh/revisit favorites
-        fav_page.refresh_favorites()
-        time.sleep(1)
-
     def tearDown(self):
         self.browser.quit()
 
