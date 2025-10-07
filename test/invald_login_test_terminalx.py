@@ -1,7 +1,7 @@
 import unittest
 import time
 from infra.browser_wrapper import BrowserWrapper
-from logic.invald_login_terminalx import LoginTerminalx
+from logic.invald_login_terminalx import LoginTerminalx, login_with_invalid_credentials
 from logic.Login_into_women_page import WomenPage
 
 class LoginTestTerminalx(unittest.TestCase):
@@ -31,6 +31,21 @@ class LoginTestTerminalx(unittest.TestCase):
 
     def tearDown(self):
         self.browser.quit()
+
+    def test_login_invalid_credentials(self):
+        """Verify error message appears for invalid credentials using helper."""
+        # Use a dedicated driver per requirement, independent from setUp's driver
+        driver = BrowserWrapper.get_driver("https://www.terminalx.com/login")
+        try:
+            err_text = login_with_invalid_credentials(
+                driver,
+                email="invalid@example.com",
+                password="wrongPassword!123",
+            )
+            self.assertTrue(err_text, "Expected an error message to be displayed for invalid login")
+            self.assertIn("Invalid email or password", err_text)
+        finally:
+            driver.quit()
 
 
 if __name__ == "__main__":

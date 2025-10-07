@@ -2,7 +2,7 @@ import unittest
 import time
 
 from infra.browser_wrapper import BrowserWrapper
-from logic.login_terminalx import LoginTerminalx
+from logic.invald_login_terminalx import LoginTerminalx
 from logic.remove_favorite_terminalx import RemoveFavoriteTerminalx
 
 
