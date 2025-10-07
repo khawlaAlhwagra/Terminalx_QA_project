@@ -13,6 +13,7 @@ class ProductPage(BasePage):
     MINI_CART_COLOR = '//span[@data-test-id="qa-item-color-value"]'
     MINI_CART_PRICE = '//div[contains(@class,"price_cQfM")]'
     MINI_CART_QTY = '//select[@class="select_zdc5 rtl_62yk qty-select_RbvK"]'
+    MINI_CART_ICON = '//a[@data-test-id="qa-link-minicart"]'  # אייקון סל
 
     def __init__(self, browser):
         super().__init__(browser)
@@ -60,3 +61,15 @@ class ProductPage(BasePage):
             EC.presence_of_element_located((By.XPATH, self.MINI_CART_QTY))
         )
         return qty.get_attribute("value")
+
+    def verify_item_added_to_cart(self):
+        """בודק שהמוצר נוסף לסל בהצלחה"""
+        try:
+            WebDriverWait(self._browser, 10).until(
+                EC.presence_of_element_located((By.XPATH, self.MINI_CART_PRODUCT_NAME))
+            )
+            print(" המוצר נוסף לסל בהצלחה")
+            return True
+        except:
+            print(" המוצר לא נוסף לסל")
+            return False

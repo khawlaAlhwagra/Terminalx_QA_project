@@ -1,6 +1,6 @@
 import unittest
 from logic.browser_wrapper import BrowserWrapper
-from logic.favorites_page import FavoritesPage
+from logic.add_to_favorites import FavoritesPage
 
 
 class TestAddToFavorites(unittest.TestCase):
