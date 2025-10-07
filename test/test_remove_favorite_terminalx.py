@@ -2,7 +2,7 @@ import unittest
 import time
 
 from infra.browser_wrapper import BrowserWrapper
-from logic.login_terminalx import LoginTerminalx
+from logic.invald_login_terminalx import LoginTerminalx
 from logic.remove_favorite_terminalx import RemoveFavoriteTerminalx
 
 
@@ -23,10 +23,6 @@ class RemoveFavoriteTest(unittest.TestCase):
 
         # 3) Remove one favorite item (best-effort)
         fav_page.remove_first_favorite()
-
-        # 4) Refresh/revisit favorites
-        fav_page.refresh_favorites()
-        time.sleep(1)
 
     def tearDown(self):
         self.browser.quit()
